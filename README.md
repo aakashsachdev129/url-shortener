@@ -11,7 +11,7 @@ Install Docker: https://docs.docker.com/get-docker/
 ### Step 1: Download project
 
 ```bash
-git clone git@github.com:aakashsachdev129/url-shortener.git
+git clone https://github.com/aakashsachdev129/url-shortener.git
 ```
 
 ```bash
