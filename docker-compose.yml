@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  # Mongodb service
+  mongo_db:
+    image: mongo:7
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+
+  # Node api service
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      URL_SHORTENER_DOMAIN: http://localhost:3000/url
+      MONGODB_URI: mongodb://mongo_db:27017/url
+    depends_on: 
+      - mongo_db
+
+volumes:
+  mongo_data: {}

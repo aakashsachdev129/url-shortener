@@ -1,5 +1,5 @@
 import { Statistics } from "../Schemas/statistics.schema";
-import { Url } from "../schemas/url.schema";
+import { Url } from "../Schemas/url.schema";
 
 export class UrlRepositoryMock {
     async create(url: Url): Promise<string> {

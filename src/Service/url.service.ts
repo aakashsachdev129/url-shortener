@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { nanoid } from 'nanoid';
 import { UrlRepository } from "../Repository/url.repository";
-import { Statistics } from "src/Schemas/statistics.schema";
+import { Statistics } from "../Schemas/statistics.schema";
 import { ConfigService } from "@nestjs/config";
 
 /**

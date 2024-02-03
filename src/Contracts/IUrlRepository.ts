@@ -1,5 +1,5 @@
-import { Statistics } from "src/Schemas/statistics.schema";
-import { Url } from "src/schemas/url.schema";
+import { Statistics } from '../Schemas/statistics.schema';
+import { Url } from '../Schemas/url.schema';
 
 /**
  * @interface
