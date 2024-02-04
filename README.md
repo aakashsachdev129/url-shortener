@@ -23,7 +23,4 @@ cd ./url-shortener
 docker compose up
 ```
 
-Open this url in your browser
-```bash
-http://localhost:3000/api
-```
+Open this url in your Browser: http://localhost:3000/api

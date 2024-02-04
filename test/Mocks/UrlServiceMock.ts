@@ -1,12 +1,11 @@
-import { Statistics } from "../Schemas/statistics.schema";
-import { Url } from "../Schemas/url.schema";
+import { Statistics } from "../../src/Schema/statistics.schema";
 
-export class UrlRepositoryMock {
-    async create(url: Url): Promise<string> {
+export class UrlServiceMock {
+    async createShortUrl(longUrl: string): Promise<string> {
         return "http://localhost:3000/url/GmgaS1HTd2";
     }
 
-    async get(shortUrl: string, ip: string): Promise<string> {
+    async getLongUrl(urlCode: string, ip: string): Promise<string> {
         return "https://cbatech.net/";
     }
 

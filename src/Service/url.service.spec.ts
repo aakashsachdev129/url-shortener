@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { UrlService } from "./url.service";
 import { UrlRepository } from "../Repository/url.repository";
 import { ConfigService } from "@nestjs/config";
-import { UrlRepositoryMock } from "../Mocks/UrlRepositoryMock";
+import { UrlRepositoryMock } from "../../test/Mocks/UrlRepositoryMock";
 
 describe('UrlService', () => {
     let urlService: UrlService;

@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Url, UrlDocument } from "../Schemas/url.schema";
-import { IUrlRepository } from "../Contracts/IUrlRepository";
-import { Statistics, StatisticsDocument } from "../Schemas/statistics.schema";
+import { Url, UrlDocument } from "../Schema/url.schema";
+import { IUrlRepository } from "../Contract/IUrlRepository";
+import { Statistics, StatisticsDocument } from "../Schema/statistics.schema";
 
 /**
  * @class UrlRepository @implements IUrlRepository

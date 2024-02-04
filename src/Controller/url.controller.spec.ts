@@ -8,8 +8,8 @@ import { SetAliasDto } from "../Dto/set-alias.dto";
 import { SetRequestLimitDto } from "../Dto/set-request-limit.dto";
 import { DeleteUrlDto } from "../Dto/delete-url.dto";
 import { UrlRepository } from "../Repository/url.repository";
-import {UrlRepositoryMock} from "../Mocks/UrlRepositoryMock";
-import {UrlServiceMock} from "../Mocks/UrlServiceMock";
+import {UrlRepositoryMock} from "../../test/Mocks/UrlRepositoryMock";
+import {UrlServiceMock} from "../../test/Mocks/UrlServiceMock";
 import {createResponse, MockResponse} from 'node-mocks-http';
 import { HttpStatus } from "@nestjs/common";
 
