@@ -17,39 +17,39 @@ const mockUrl = {
 
 const mockStatistics = [
     {
-      "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-      "longUrl": "https://cbatech.net/",
-      "visitCount": 0,
-      "ip": "",
-      "lastVisited": null
+        "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+        "longUrl": "https://cbatech.net/",
+        "visitCount": 0,
+        "ip": "",
+        "lastVisited": null
     },
     {
-      "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-      "longUrl": "https://cbatech.net/",
-      "visitCount": 1,
-      "ip": "::1",
-      "lastVisited": new Date("2024-02-02T22:00:30.267Z")
+        "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+        "longUrl": "https://cbatech.net/",
+        "visitCount": 1,
+        "ip": "::1",
+        "lastVisited": new Date("2024-02-02T22:00:30.267Z")
     }
-  ] as Statistics[];
+] as Statistics[];
 
 describe('UrlRepository', () => {
     let urlRepository: UrlRepository;
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-        providers: [
-        UrlRepository,
-        {provide: getModelToken(Url.name), useValue: UrlModelMock},
-        {provide: getModelToken(Statistics.name), useValue: StatisticsModelMock}
-    ],
-    }).compile();
+    beforeEach(async () => {
+        const app: TestingModule = await Test.createTestingModule({
+            providers: [
+                UrlRepository,
+                { provide: getModelToken(Url.name), useValue: UrlModelMock },
+                { provide: getModelToken(Statistics.name), useValue: StatisticsModelMock }
+            ],
+        }).compile();
 
-    urlRepository = app.get<UrlRepository>(UrlRepository);
+        urlRepository = app.get<UrlRepository>(UrlRepository);
     });
 
     afterEach(() => {
         jest.clearAllMocks();
-      });
+    });
 
     it('UrlRepository - should be defined', () => {
         expect(urlRepository).toBeDefined();

@@ -49,20 +49,20 @@ describe('UrlService', () => {
         it('should get the Statistics', async () => {
             const response = [
                 {
-                  "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-                  "longUrl": "https://cbatech.net/",
-                  "visitCount": 0,
-                  "ip": "",
-                  "lastVisited": null
+                    "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+                    "longUrl": "https://cbatech.net/",
+                    "visitCount": 0,
+                    "ip": "",
+                    "lastVisited": null
                 },
                 {
-                  "ip": "::1",
-                  "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-                  "lastVisited": new Date("2024-02-02T22:00:30.267Z"),
-                  "longUrl": "https://cbatech.net/",
-                  "visitCount": 1
+                    "ip": "::1",
+                    "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+                    "lastVisited": new Date("2024-02-02T22:00:30.267Z"),
+                    "longUrl": "https://cbatech.net/",
+                    "visitCount": 1
                 }
-              ]
+            ]
             const stats = await urlService.getStatistics();
             expect(stats).toEqual(response);
         });

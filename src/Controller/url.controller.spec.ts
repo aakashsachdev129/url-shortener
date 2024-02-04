@@ -8,14 +8,13 @@ import { SetAliasDto } from "../Dto/set-alias.dto";
 import { SetRequestLimitDto } from "../Dto/set-request-limit.dto";
 import { DeleteUrlDto } from "../Dto/delete-url.dto";
 import { UrlRepository } from "../Repository/url.repository";
-import {UrlRepositoryMock} from "../../test/Mocks/UrlRepositoryMock";
-import {UrlServiceMock} from "../../test/Mocks/UrlServiceMock";
-import {createResponse, MockResponse} from 'node-mocks-http';
+import { UrlRepositoryMock } from "../../test/Mocks/UrlRepositoryMock";
+import { UrlServiceMock } from "../../test/Mocks/UrlServiceMock";
+import { createResponse, MockResponse } from 'node-mocks-http';
 import { HttpStatus } from "@nestjs/common";
 
 describe('UrlController', () => {
     let urlController: UrlController;
-    let urlService: UrlService;
     let responseObj: MockResponse<Response>;
     let shortenUrlDto: ShortenUrlDto;
     let setAliasDto: SetAliasDto;
@@ -51,7 +50,6 @@ describe('UrlController', () => {
         }).compile();
 
         urlController = app.get<UrlController>(UrlController);
-        urlService = app.get<UrlService>(UrlService);
         shortenUrlDto = app.get<ShortenUrlDto>(ShortenUrlDto);
         setRequestLimitDto = app.get<SetRequestLimitDto>(SetRequestLimitDto);
         deleteUrlDto = app.get<DeleteUrlDto>(DeleteUrlDto);
@@ -73,20 +71,20 @@ describe('UrlController', () => {
         it('should get the Statistics', async () => {
             const response = [
                 {
-                  "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-                  "longUrl": "https://cbatech.net/",
-                  "visitCount": 0,
-                  "ip": "",
-                  "lastVisited": null
+                    "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+                    "longUrl": "https://cbatech.net/",
+                    "visitCount": 0,
+                    "ip": "",
+                    "lastVisited": null
                 },
                 {
-                  "ip": "::1",
-                  "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
-                  "lastVisited": "2024-02-02T22:00:30.267Z",
-                  "longUrl": "https://cbatech.net/",
-                  "visitCount": 1
+                    "ip": "::1",
+                    "shortUrl": "http://localhost:3000/url/GmgaS1HTd2",
+                    "lastVisited": "2024-02-02T22:00:30.267Z",
+                    "longUrl": "https://cbatech.net/",
+                    "visitCount": 1
                 }
-              ]
+            ]
             await urlController.getStatistics(responseObj);
             const stats = responseObj._getJSONData();
             expect(stats).toEqual(response);
@@ -104,7 +102,7 @@ describe('UrlController', () => {
 
     describe('setAlias', () => {
         it('should get the aliased URL', async () => {
-            setAliasDto = {shortUrl: "https://cbatech.net/", alias: "cba"};
+            setAliasDto = { shortUrl: "https://cbatech.net/", alias: "cba" };
             await urlController.setAlias(setAliasDto, responseObj);
             const aliasUrl = responseObj._getData();
             expect(aliasUrl).toEqual("http://localhost:3000/url/cba");
