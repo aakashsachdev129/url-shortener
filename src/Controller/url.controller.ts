@@ -64,7 +64,7 @@ export class UrlController {
     @ApiExcludeEndpoint(true)
     async getAndRedirect(@Param('urlCode') urlCode: string, @Ip() ip: string, @Res() res: Response) {
         try {
-            var originalUrl = await this.urlService.getLongUrl(urlCode, ip);
+            let originalUrl = await this.urlService.getLongUrl(urlCode, ip);
             return res.redirect(originalUrl);
         } catch (error) {
             throw new HttpException(error.response, error.status);
