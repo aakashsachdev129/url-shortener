@@ -58,7 +58,7 @@ export class UrlRepository implements IUrlRepository {
         try {
             const result = await this.urlModel.findOne({ "shortUrl": shortUrl }).exec();
 
-            if (result["isDeleted"]) {
+            if (result && result["isDeleted"]) {
                 // Throw an exception if the URL has been deleted
                 throw new HttpException("The Url has been deleted!", HttpStatus.NOT_FOUND);
             }
