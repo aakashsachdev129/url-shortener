@@ -10,6 +10,7 @@ Author: Aakash Sachdev
 ## Steps to run
 
 ### Step 1: Download project
+
 ```bash
 git clone https://github.com/aakashsachdev129/url-shortener.git
 ```
@@ -19,6 +20,7 @@ cd ./url-shortener
 ```
 
 ### Step 2: Run project
+
 ```bash
 docker compose up
 ```
