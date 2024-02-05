@@ -27,9 +27,9 @@ export class UrlRepository implements IUrlRepository {
         .findOne({ longUrl: url.longUrl })
         .exec();
 
-      if (result && result['shortUrl']) {
+      if (result && result.shortUrl) {
         // return the shortURL if it already exists for the provided longURL
-        return result['shortUrl'];
+        return result.shortUrl;
       } else {
         // save the shortURL
         const newUrl = new this.urlModel(url);
@@ -63,15 +63,15 @@ export class UrlRepository implements IUrlRepository {
     try {
       const result = await this.urlModel.findOne({ shortUrl: shortUrl }).exec();
 
-      if (result && result['isDeleted']) {
+      if (result && result.isDeleted) {
         // Throw an exception if the URL has been deleted
         throw new HttpException(
           'The Url has been deleted!',
           HttpStatus.NOT_FOUND,
         );
       }
-      if (result && result['longUrl']) {
-        const requestLimit = result['requestLimit'];
+      if (result && result.longUrl) {
+        const requestLimit = result.requestLimit;
 
         // Sum the total visit count for this URL
         const sumVisitCount = await this.statisticsModel.aggregate([
@@ -102,7 +102,7 @@ export class UrlRepository implements IUrlRepository {
               {
                 $inc: { visitCount: 1 },
                 shortUrl: shortUrl,
-                longUrl: result['longUrl'],
+                longUrl: result.longUrl,
                 ip: ip,
                 lastVisited: new Date(),
               },
@@ -111,7 +111,7 @@ export class UrlRepository implements IUrlRepository {
             .exec();
         }
 
-        return result['longUrl'];
+        return result.longUrl;
       } else {
         // Throw an exception if the URL does not exist
         throw new HttpException('Url does not exist!', HttpStatus.NOT_FOUND);
@@ -147,7 +147,7 @@ export class UrlRepository implements IUrlRepository {
         .findOne({ shortUrl: url.longUrl })
         .exec();
 
-      if (exists && exists['isDeleted']) {
+      if (exists && exists.isDeleted) {
         // Throw an exception if the URL has been deleted
         throw new HttpException(
           'The Url has been deleted!',
@@ -159,7 +159,7 @@ export class UrlRepository implements IUrlRepository {
         .findOne({ shortUrl: url.shortUrl })
         .exec();
 
-      if (aliasExists && aliasExists['shortUrl']) {
+      if (aliasExists && aliasExists.shortUrl) {
         // Throw an exception if the Alias name already exists
         throw new HttpException(
           'Alias name already exists! Please choose a different Alias name!',
@@ -201,7 +201,7 @@ export class UrlRepository implements IUrlRepository {
     try {
       const exists = await this.urlModel.findOne({ shortUrl: shortUrl }).exec();
 
-      if (exists && exists['isDeleted']) {
+      if (exists && exists.isDeleted) {
         // Throw an exception if the URL has been deleted
         throw new HttpException(
           'The Url has been deleted!',
@@ -241,7 +241,7 @@ export class UrlRepository implements IUrlRepository {
     try {
       const exists = await this.urlModel.findOne({ shortUrl: shortUrl }).exec();
 
-      if (exists && exists['isDeleted']) {
+      if (exists && exists.isDeleted) {
         // Throw an exception if the URL has already been deleted
         throw new HttpException(
           'The Url has already been deleted!',
